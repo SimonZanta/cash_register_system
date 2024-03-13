@@ -3,20 +3,20 @@ package com.example.DBConnected;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Desks")
-public class Desk {
-
+@Table(name = "authorizations")
+public class Authorization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long desk_id;
+    private long authorization_id;
     private String name;
-    private Desk(){}
-    public Desk(String name){
+    private Authorization(){}
+
+    public Authorization(String name) {
         this.name = name;
     }
 
     public long getId() {
-        return desk_id;
+        return authorization_id;
     }
 
     public String getName() {

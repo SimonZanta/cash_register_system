@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 //example of model representing table and its columns
 //table name only with underscore, camelCase will be converted to camel_case
 @Entity
-@Table(name = "test_table")
-public class Person {
+@Table(name = "employees")
+public class Employee {
 
     //private fields, without notation means they are also column names in the table
     @Id
@@ -15,15 +15,17 @@ public class Person {
     private String first_name;
     private String last_name;
     private String email;
-    private String gender;
+    @OneToOne
+    @JoinColumn(name="authorization_id")
+    private Authorization authorization;
 
-    private Person() {}
+    private Employee() {}
 
-    public Person(String first_name, String last_name, String email, String gender){
+    public Employee(String first_name, String last_name, String email, Authorization authorization){
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
-        this.gender = gender;
+        this.authorization = authorization;
     }
 
     public long getId() {
@@ -42,7 +44,7 @@ public class Person {
         return email;
     }
 
-    public String getGender() {
-        return gender;
+    public Authorization getAuthorization() {
+        return authorization;
     }
 }

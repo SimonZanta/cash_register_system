@@ -14,12 +14,12 @@ public class DeskController {
         //needs CrossOrigin enabled globally, this is temporary localy
         //we need it enable otherwise next.js will cry that its disabled
         @CrossOrigin(origins = "http://localhost:3000")
-        @GetMapping("/Desks")
+        @GetMapping("/Desk")
         public Iterable<Desk> findAllEmployees(){
             return this.deskRepo.findAll();
         }
 
-        @PostMapping("/Desks")
+        @PostMapping("/Desk")
         public Desk addOneEmployee(@RequestBody Desk desk){
             return this.deskRepo.save(desk);
         }
