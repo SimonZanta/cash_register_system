@@ -10,7 +10,7 @@ public class Desk {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long desk_id;
     private String name;
-    private Desk(){}
+    protected Desk(){}
     public Desk(String name){
         this.name = name;
     }

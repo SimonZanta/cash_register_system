@@ -26,9 +26,6 @@ public class ReservationController {
                 .orElseThrow(() -> new ResourceNotFoundException("Desk not found with id " + reservationDTO.getDeskId()));
 
         Reservation reservation = new Reservation();
-        reservation.setName(reservationDTO.getName());
-        reservation.setStart_time(reservationDTO.getStart_time());
-        reservation.setDesk(desk);
 
         return this.reservationRepo.save(reservation);
     }
