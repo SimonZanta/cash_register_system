@@ -1,9 +1,11 @@
 package com.example.DBConnected;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 public class ReservationDeskController {
@@ -15,7 +17,6 @@ public class ReservationDeskController {
         this.deskRepo =deskRepo;
         this.reservationRepo = reservationRepo;
     }
-
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/ReservationDesk")
     public Iterable<ReservationDesk> findAllReservations(){
@@ -23,7 +24,15 @@ public class ReservationDeskController {
     }
 
     @PostMapping("/ReservationDesk")
-    public ReservationDesk addOneReservationDesk(@RequestBody ReservationDeskDTO reservationDeskDTO) {
+    public ResponseEntity<?> addOneReservationDesk(@RequestBody ReservationDeskDTO reservationDeskDTO) {
+        Optional<ReservationDesk> existingReservation = reservationDeskRepo.findByDeskIdAndStartTime(
+                reservationDeskDTO.getDeskId(),
+                reservationDeskDTO.getStartTime());
+
+        if (existingReservation.isPresent()) {
+            return ResponseEntity.badRequest().body("Reservation for the desk at the specified time already exists");
+        }
+
         Desk desk = deskRepo.findById(reservationDeskDTO.getDeskId())
                 .orElseThrow(() -> new RuntimeException("Desk not found: " + reservationDeskDTO.getDeskId()));
 
@@ -36,8 +45,8 @@ public class ReservationDeskController {
         reservationDesk.setStartTime(reservationDeskDTO.getStartTime());
         reservationDesk.setEndTime(reservationDeskDTO.getEndTime());
 
-        return reservationDeskRepo.save(reservationDesk);
-    }
-
+        reservationDeskRepo.save(reservationDesk);
+        return ResponseEntity.ok(reservationDesk);
+     }
 
 }

@@ -13,15 +13,25 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservation_id;
 
+    private String name;
     @OneToMany(mappedBy = "reservation")
     private Set<ReservationDesk> reservationDesks = new HashSet<>();
-    public Reservation() {
+    protected Reservation() {
     }
 
+    public Reservation(String name) {
+        this.name = name;
+    }
 
     public long getReservation_id() {
         return reservation_id;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

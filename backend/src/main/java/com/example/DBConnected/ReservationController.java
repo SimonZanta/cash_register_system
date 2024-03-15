@@ -22,11 +22,11 @@ public class ReservationController {
 
     @PostMapping("/Reservation")
     public Reservation addOneReservation(@RequestBody ReservationDTO reservationDTO){
-        Desk desk = deskRepo.findById(reservationDTO.getDeskId())
-                .orElseThrow(() -> new ResourceNotFoundException("Desk not found with id " + reservationDTO.getDeskId()));
+       // Desk desk = deskRepo.findById(reservationDTO.getDeskId())
+       //         .orElseThrow(() -> new ResourceNotFoundException("Desk not found with id " + reservationDTO.getDeskId()));
 
         Reservation reservation = new Reservation();
-
+        reservation.setName(reservationDTO.getName());
         return this.reservationRepo.save(reservation);
     }
 
