@@ -19,6 +19,7 @@ backend/src/main/resources/application.properties
 *.iws
 *.iml
 *.ipr
+.properties
 passwords.env
 ### NetBeans ###
 /nbproject/private/
