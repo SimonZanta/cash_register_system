@@ -1,4 +1,4 @@
-package com.example.DBConnected;
+package com.example.DBConnected.ReservationDesk;
 
 import org.hibernate.persister.entity.SingleTableEntityPersister;
 
@@ -8,8 +8,6 @@ public class ReservationDeskDTO {
     private Integer id;
     private Integer reservationId;
     private Integer deskId;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
 
     public Integer getId() {
         return id;
@@ -29,21 +27,5 @@ public class ReservationDeskDTO {
 
     public void setDeskId(Integer deskId) {
         this.deskId = deskId;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
     }
 }

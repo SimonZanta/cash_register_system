@@ -1,5 +1,7 @@
-package com.example.DBConnected;
+package com.example.DBConnected.ReservationDesk;
 
+import com.example.DBConnected.Desk.Desk;
+import com.example.DBConnected.Reservation.Reservation;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -8,7 +10,7 @@ import java.time.LocalDateTime;
 public class ReservationDesk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "reservation_id")
@@ -18,18 +20,13 @@ public class ReservationDesk {
     @JoinColumn(name = "desk_id")
     private Desk desk;
 
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-
     public ReservationDesk() {
     }
-    public ReservationDesk(Reservation reservation, Desk desk, LocalDateTime startTime, LocalDateTime endTime) {
+    public ReservationDesk(Reservation reservation, Desk desk) {
         this.reservation = reservation;
         this.desk = desk;
-        this.startTime = startTime;
-        this.endTime = endTime;
     }
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -41,27 +38,11 @@ public class ReservationDesk {
         return desk;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
 
     public void setDesk(Desk desk) {
         this.desk = desk;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
     }
 }

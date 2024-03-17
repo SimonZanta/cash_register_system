@@ -1,4 +1,4 @@
-package com.example.DBConnected;
+package com.example.DBConnected.Employee;
 
 import org.springframework.web.bind.annotation.*;
 

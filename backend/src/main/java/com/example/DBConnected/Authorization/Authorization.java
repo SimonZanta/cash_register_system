@@ -1,4 +1,4 @@
-package com.example.DBConnected;
+package com.example.DBConnected.Authorization;
 
 import jakarta.persistence.*;
 
@@ -7,16 +7,16 @@ import jakarta.persistence.*;
 public class Authorization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long authorization_id;
+    private long id;
     private String name;
-    private Authorization(){}
+    protected Authorization(){}
 
     public Authorization(String name) {
         this.name = name;
     }
 
     public long getId() {
-        return authorization_id;
+        return id;
     }
 
     public String getName() {

@@ -1,5 +1,6 @@
-package com.example.DBConnected;
+package com.example.DBConnected.Reservation;
 
+import com.example.DBConnected.ReservationDesk.ReservationDesk;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -11,9 +12,11 @@ import java.util.Set;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reservation_id;
+    private long id;
 
     private String name;
+    private LocalDateTime start_time;
+    private LocalDateTime end_time;
     @OneToMany(mappedBy = "reservation")
     private Set<ReservationDesk> reservationDesks = new HashSet<>();
     protected Reservation() {
@@ -23,8 +26,8 @@ public class Reservation {
         this.name = name;
     }
 
-    public long getReservation_id() {
-        return reservation_id;
+    public long getId() {
+        return id;
     }
 
     public String getName() {
@@ -33,5 +36,21 @@ public class Reservation {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public LocalDateTime getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(LocalDateTime startTime) {
+        this.start_time = startTime;
+    }
+
+    public LocalDateTime getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(LocalDateTime endTime) {
+        this.end_time = endTime;
     }
 }

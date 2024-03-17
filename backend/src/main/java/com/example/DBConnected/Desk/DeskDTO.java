@@ -1,14 +1,14 @@
-package com.example.DBConnected;
+package com.example.DBConnected.Desk;
 
 public class DeskDTO {
-    private long desk_id;
+    private Integer desk_id;
     private String name;
 
     public DeskDTO(String name) {
         this.name = name;
     }
 
-    public long getDesk_id() {
+    public Integer getDesk_id() {
         return desk_id;
     }
 

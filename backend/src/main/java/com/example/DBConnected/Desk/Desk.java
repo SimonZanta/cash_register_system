@@ -1,6 +1,8 @@
-package com.example.DBConnected;
+package com.example.DBConnected.Desk;
 
 import jakarta.persistence.*;
+
+import java.net.InterfaceAddress;
 
 @Entity
 @Table(name = "Desks")
@@ -8,7 +10,7 @@ public class Desk {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long desk_id;
+    private long id;
     private String name;
     protected Desk(){}
     public Desk(String name){
@@ -16,7 +18,7 @@ public class Desk {
     }
 
     public long getId() {
-        return desk_id;
+        return id;
     }
 
     public String getName() {

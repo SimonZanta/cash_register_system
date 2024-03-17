@@ -1,5 +1,6 @@
-package com.example.DBConnected;
+package com.example.DBConnected.Employee;
 
+import com.example.DBConnected.Authorization.Authorization;
 import jakarta.persistence.*;
 
 //example of model representing table and its columns
@@ -19,7 +20,7 @@ public class Employee {
     @JoinColumn(name="authorization_id")
     private Authorization authorization;
 
-    private Employee() {}
+    protected Employee() {}
 
     public Employee(String first_name, String last_name, String email, Authorization authorization){
         this.first_name = first_name;

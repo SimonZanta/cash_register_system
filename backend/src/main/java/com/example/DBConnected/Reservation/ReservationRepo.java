@@ -1,5 +1,6 @@
-package com.example.DBConnected;
+package com.example.DBConnected.Reservation;
 
+import com.example.DBConnected.Reservation.Reservation;
 import org.springframework.data.repository.CrudRepository;
 
 //this is simple middle man between model and controller
