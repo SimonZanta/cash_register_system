@@ -1,6 +1,5 @@
 package com.example.DBConnected.Reservation;
 
-import com.example.DBConnected.*;
 import com.example.DBConnected.Desk.Desk;
 import com.example.DBConnected.Desk.DeskRepo;
 import com.example.DBConnected.ReservationDesk.ReservationDesk;

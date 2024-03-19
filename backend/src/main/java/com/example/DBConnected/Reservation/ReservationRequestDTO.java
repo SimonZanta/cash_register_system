@@ -1,4 +1,4 @@
-package com.example.DBConnected;
+package com.example.DBConnected.Reservation;
 
 import java.time.LocalDateTime;
 import java.util.List;

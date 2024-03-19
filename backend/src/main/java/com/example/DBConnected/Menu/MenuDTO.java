@@ -1,19 +1,11 @@
 package com.example.DBConnected.Menu;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name="menu")
-public class Menu {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MenuDTO {
     private long id;
 
     private String name;
+
     private int weight;
-    //zatím akruálně nemám tušení jak tohle přesně mám udělat a jak se to domyslí
-    //private boolean availability;
-    //pak zde bude URL na obrázek bo tak něco
 
     public long getId() {
         return id;

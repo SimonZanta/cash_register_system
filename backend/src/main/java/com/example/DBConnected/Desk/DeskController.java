@@ -20,7 +20,7 @@ public class DeskController {
         }
 
         @PostMapping("/Desk")
-        public Desk addOneEmployee(@RequestBody Desk desk){
+        public Desk addOneDesk(@RequestBody Desk desk){
             return this.deskRepo.save(desk);
         }
 
