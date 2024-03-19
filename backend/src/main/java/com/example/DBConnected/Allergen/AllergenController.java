@@ -11,6 +11,7 @@ public class AllergenController {
     public AllergenController(AllergenRepo allergenRepo) {
         this.allergenRepo = allergenRepo;
     }
+    //Tohle nejspíš bude někde potřeba aby byl seznam alergenů ale uvidíme
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/Allergen")
     public Iterable<Allergen> findAllAllergens(){
