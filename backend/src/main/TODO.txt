@@ -1,0 +1,14 @@
+Funkce: celková útrata na stole... budu muset přijít na to jak to dělat podle ID
+Procedura: Denní uzávěrka... zatím součet všech účtů za ten den, je možný že
+přidám ještě něco jako promazání všech účtů nebo tak něco aby nikdo nemohl nic
+Trigger: trochu prasárna ale mohlo by fungovat: CREATE TRIGGER DeleteOrderAfterTableIsPaid
+                                                AFTER DELETE ON OrderMenu
+                                                FOR EACH ROW
+                                                BEGIN
+                                                    IF ((SELECT COUNT(*) FROM OrderMenu WHERE order_id = OLD.order_id) = 0) THEN
+                                                    DELETE FROM order WHERE id = OLD.id; tady ještě bude potřeba domyslet nejsem si 100% jistý funkčností myslím že bude potřeba něco jako hledat ID objednávky protože to se skoro nikdy nebude shodovat s ID které tam bylo posláno
+                                                    END IF;
+                                                END;
+Pohled: mohl bych udělat jako otevřeno akruálně: což by byl součet všech otevřených
+účtů na stolech (to je v podsatě funkce chce něco jiného)
+
