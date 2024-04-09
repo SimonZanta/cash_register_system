@@ -13,26 +13,26 @@ export default function Home() {
   console.log()
 
   return (
-    <main>
+    <main className="text-sm">
     <div className="grid grid-cols-3 grid-rows-1 ">
 
       <div className="col-start-1 ">
-        <ScrollableBlock><DeskItems /></ScrollableBlock>
+        <ScrollableBlock blockName="table orders"><DeskItems /></ScrollableBlock>
       </div>
 
       <div className="col-start-2 row-span-2">
-        <ScrollableBlock isCenter={true}><MenuItems/></ScrollableBlock>
+        <ScrollableBlock isCenter={true} blockName="menu"><MenuItems/></ScrollableBlock>
       </div>
 
       <div className="col-start-3">
-        <ScrollableBlock><DeskReservationItems onSelectItems={setSelectedItems}/></ScrollableBlock>
+        <ScrollableBlock blockName="table reservation"><DeskReservationItems onSelectItems={setSelectedItems}/></ScrollableBlock>
       </div>
 
       <div className="col-start-1 row-start-2">
-        <ScrollableBlock></ScrollableBlock>
+        <ScrollableBlock blockName="payments"></ScrollableBlock>
       </div>
       <div className="col-start-3 row-start-2">
-        <ScrollableBlock><ReservationDetails desk={selectedItems}/></ScrollableBlock>
+        <ScrollableBlock blockName="reservation details"><ReservationDetails desk={selectedItems}/></ScrollableBlock>
       </div>
     </div>
     </main>

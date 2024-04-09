@@ -4,7 +4,7 @@ export default function ScrollableBlock({blockName = "blockName", isCenter = fal
             <div className="text-center uppercase sticky top-0 p-5">
                 {blockName}
             </div>
-            <div className={"overflow-auto px-7 pt-3 bg-[#121212] " + (isCenter ? 'h-[87.6%]' : 'h-[75%]')}>
+            <div className={"rounded-md overflow-auto px-7 pt-3 bg-[#1A1A1A] " + (isCenter ? 'h-[87.6%]' : 'h-[75%]')}>
                 <div className="flex flex-col">
                 {children}
                 </div>
