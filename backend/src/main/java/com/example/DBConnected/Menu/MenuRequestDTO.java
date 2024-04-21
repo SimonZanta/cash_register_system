@@ -8,9 +8,23 @@ public class MenuRequestDTO {
         private String name;
 
         private int weight;
+
+        private int price;
         private List<Long> allergensIds;
 
-        public long getId() {
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
             return id;
         }
 

@@ -27,18 +27,6 @@ public class MenuController {
     public Iterable<Menu> findAllEmployees(){
         return this.menuRepo.findAll();
     }
-    /*
-    {
-        "name": "Smažák s hranolkama",
-        "weight": 250,
-        "allergensIds": [1,3,7]
-    }
-    tady z toho se bude posílat nové jídlo ve tvaru co je nahoře možná do budoucna se
-    bude nějak dál upravovat zatím nevím co všechno tam budeme chtít ale to už by
-    nemělo bejt nic moc.
-    Je tam ještě v řešení obrázek ale uvidíme co všechno bude potřeba a to už
-    pak nebude nic jinýho.
-     */
     @PostMapping("/Menu")
     @Transactional
     public ResponseEntity<?> createReservation(@RequestBody MenuRequestDTO requestDTO) {
@@ -46,6 +34,7 @@ public class MenuController {
         Menu menu = new Menu();
         menu.setName(requestDTO.getName());
         menu.setWeight(requestDTO.getWeight());
+        menu.setPrice(requestDTO.getPrice());
         menu = menuRepo.save(menu);
 
         for(Long deskId : requestDTO.getAllergensIds()) {

@@ -1,5 +1,6 @@
 package com.example.DBConnected.Menu;
 
+import com.example.DBConnected.Photos.Photo;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,9 +12,18 @@ public class Menu {
 
     private String name;
     private int weight;
-    //zatím akruálně nemám tušení jak tohle přesně mám udělat a jak se to domyslí
-    //private boolean availability;
-    //pak zde bude URL na obrázek bo tak něco
+    private int price;
+    @OneToOne
+    private Photo photo;
+    protected Menu (){};
+
+    public Menu(long id, String name, int weight, int price, Photo photo) {
+        this.id = id;
+        this.name = name;
+        this.weight = weight;
+        this.price = price;
+        this.photo = photo;
+    }
 
     public long getId() {
         return id;
@@ -34,4 +44,25 @@ public class Menu {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
+    }
 }
+

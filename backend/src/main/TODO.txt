@@ -9,6 +9,4 @@ Trigger: trochu prasárna ale mohlo by fungovat: CREATE TRIGGER DeleteOrderAfter
                                                     DELETE FROM order WHERE id = OLD.id; tady ještě bude potřeba domyslet nejsem si 100% jistý funkčností myslím že bude potřeba něco jako hledat ID objednávky protože to se skoro nikdy nebude shodovat s ID které tam bylo posláno
                                                     END IF;
                                                 END;
-Pohled: mohl bych udělat jako otevřeno akruálně: což by byl součet všech otevřených
-účtů na stolech (to je v podsatě funkce chce něco jiného)
-
+Pohled: rezervace na daný den

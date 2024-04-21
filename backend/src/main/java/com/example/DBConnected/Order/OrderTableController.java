@@ -10,6 +10,11 @@ import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 @RestController
 public class OrderTableController {
     private final OrderTableRepo orderRepo;
@@ -25,11 +30,14 @@ public class OrderTableController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/Order")
-    public Iterable<OrderTable> findAllOrders(){
-        return this.orderRepo.findAll();
+    @GetMapping("/total-sales")
+    public ResponseEntity<List<totalSalesDTO>> getTotalSalesForAllTables() {
+        List<Object[]> salesData = orderRepo.getTotalSalesForAllTables();
+        List<totalSalesDTO> totalSales = salesData.stream()
+                .map(data -> new totalSalesDTO((Long)data[0], (BigDecimal)data[1]))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(totalSales);
     }
-
     @PostMapping("/Order")
     @Transactional
     public ResponseEntity<?> addOneOrder(@RequestBody OrderRequestDTO orderRequestDTO){

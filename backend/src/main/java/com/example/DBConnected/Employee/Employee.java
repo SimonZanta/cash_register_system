@@ -16,16 +16,19 @@ public class Employee {
     private String first_name;
     private String last_name;
     private String email;
+    private String password;
     @OneToOne
     @JoinColumn(name="authorization_id")
     private Authorization authorization;
 
     protected Employee() {}
 
-    public Employee(String first_name, String last_name, String email, Authorization authorization){
+    public Employee(long id, String first_name, String last_name, String email, String password, Authorization authorization) {
+        this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
+        this.password = password;
         this.authorization = authorization;
     }
 
@@ -47,5 +50,33 @@ public class Employee {
 
     public Authorization getAuthorization() {
         return authorization;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setAuthorization(Authorization authorization) {
+        this.authorization = authorization;
     }
 }

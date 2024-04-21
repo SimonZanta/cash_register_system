@@ -12,4 +12,7 @@ public interface OrderMenuRepo extends CrudRepository<OrderMenu, Integer> {
     @Query("SELECT om FROM OrderMenu om WHERE om.order.id = :orderId AND om.menu.id = :menuId")
     List<OrderMenu> findByOrderId(@Param("orderId") long orderId, @Param("menuId") long menuId);
 
+    @Query("SELECT om FROM OrderMenu om WHERE om.id = :id")
+    OrderMenu findById(@Param("id") long id);
+
 }

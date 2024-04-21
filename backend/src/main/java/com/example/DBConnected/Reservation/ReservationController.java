@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,7 +24,7 @@ public class ReservationController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/Reservation")
+    @GetMapping("/today")
     public Iterable<Reservation> findAllEmployees(){
         return this.reservationRepo.findAll();
     }

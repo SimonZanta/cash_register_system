@@ -4,6 +4,8 @@ import com.example.DBConnected.Menu.Menu;
 import com.example.DBConnected.Order.OrderTable;
 import jakarta.persistence.*;
 
+import javax.swing.plaf.IconUIResource;
+
 @Entity
 @Table(name = "ordermenu")
 public class OrderMenu {
@@ -18,11 +20,14 @@ public class OrderMenu {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private OrderTable order;
+
+    private int count;
     public OrderMenu(){}
 
-    public OrderMenu(Menu menu, OrderTable order) {
+    public OrderMenu(Menu menu, OrderTable order, int count) {
         this.menu = menu;
         this.order = order;
+        this.count = count;
     }
 
     public Menu getMenu() {
@@ -43,5 +48,13 @@ public class OrderMenu {
 
     public void setOrder(OrderTable order) {
         this.order = order;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
