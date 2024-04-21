@@ -29,6 +29,7 @@ public class ReservationController {
         return this.reservationRepo.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/Reservation")
     @Transactional
     public ResponseEntity<?> createReservation(@RequestBody ReservationRequestDTO requestDTO) {
