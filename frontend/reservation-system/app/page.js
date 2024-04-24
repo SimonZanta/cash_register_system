@@ -13,7 +13,7 @@ export default function Home() {
   console.log()
 
   return (
-    <main className="text-sm">
+    <main className="text-base">
     <div className="grid grid-cols-3 grid-rows-1 ">
 
       <div className="col-start-1 ">
