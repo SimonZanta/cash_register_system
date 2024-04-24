@@ -3,14 +3,14 @@ import ScrollableBlock from "./components/UI/scrollableBlock";
 import MenuItems from "./components/MenuItems";
 import DeskItems from "./components/DeskItems";
 import DeskReservationItems from "./components/DeskReservationItems";
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import ReservationDetails from "./components/ReservationDetails";
+import {isAuthenticated} from '@/app/Auth';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
 
   const [selectedItems, setSelectedItems] = useState("")
-
-  console.log()
 
   return (
     <main className="text-base">

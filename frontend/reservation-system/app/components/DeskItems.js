@@ -4,8 +4,10 @@ import { useState, useEffect } from "react"
 export default function DeskItems({}){
     const [data, setData] = useState([])
 
+    console.log(data)
+
     useEffect(() => {
-      fetch('http://localhost:8080/Desk')
+      fetch('http://localhost:8080/today')
       .then(response => response.json())
       .then(data => setData(data))
     }, [])
