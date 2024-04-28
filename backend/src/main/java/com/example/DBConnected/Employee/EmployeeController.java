@@ -1,6 +1,9 @@
 package com.example.DBConnected.Employee;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 //this file is used to map get, post etc. and what will happen if we call them
 @RestController
@@ -10,16 +13,23 @@ public class EmployeeController {
         this.personRepo = personRepo;
     }
 
-    //refactor on bigger codebase
-    //needs CrossOrigin enabled globally, this is temporary localy
-    //we need it enable otherwise next.js will cry that its disabled
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/Person")
-    public Iterable<Employee> findAllEmployees(){
-        return this.personRepo.findAll();
+    @GetMapping("/login")
+    public Employee findEmployees(@RequestBody EmployeeDTO employeeDTO){
+        Employee employee = personRepo.findByUsername(employeeDTO.getUsername());
+        if(employee == null){
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "nejaka error hlaska");
+
+        }
+        if(employee.getPassword().equals(employeeDTO.getPassword())){
+            return employee;
+        }
+        throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "nejaka error hlaska");
     }
 
-    @PostMapping("/Person")
+    @PostMapping("/register")
     public Employee addOneEmployee(@RequestBody Employee person){
         return this.personRepo.save(person);
     }
