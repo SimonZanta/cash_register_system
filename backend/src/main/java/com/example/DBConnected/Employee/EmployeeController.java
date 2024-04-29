@@ -14,14 +14,14 @@ public class EmployeeController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/login")
+    @PostMapping("/login")
     public Employee findEmployees(@RequestBody EmployeeDTO employeeDTO){
         Employee employee = personRepo.findByUsername(employeeDTO.getUsername());
         if(employee == null){
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "nejaka error hlaska");
 
-        }
+        }   
         if(employee.getPassword().equals(employeeDTO.getPassword())){
             return employee;
         }
