@@ -28,7 +28,7 @@ export default function Home() {
       </div>
 
       <div className="col-start-1 row-start-2">
-        <ScrollableBlock blockName="payments"><PaymentDetails/></ScrollableBlock>
+        <ScrollableBlock blockName="settings"><PaymentDetails/></ScrollableBlock>
       </div>
       <div className="col-start-3 row-start-2">
         <ScrollableBlock blockName="reservation details"><ReservationDetails desk={selectedTables}/></ScrollableBlock>
