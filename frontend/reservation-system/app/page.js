@@ -3,14 +3,13 @@ import ScrollableBlock from "./components/UI/scrollableBlock";
 import MenuItems from "./components/MenuItems";
 import DeskItems from "./components/DeskItems";
 import DeskReservationItems from "./components/DeskReservationItems";
-import { useState, useLayoutEffect } from "react";
+import { useState } from "react";
 import ReservationDetails from "./components/ReservationDetails";
-import {isAuthenticated} from '@/app/Auth';
-import { redirect } from 'next/navigation';
+import PaymentDetails from "./components/paymentDetails";
 
 export default function Home() {
 
-  const [selectedItems, setSelectedItems] = useState("")
+  const [selectedTables, setSelectedTables] = useState("")
 
   return (
     <main className="text-base">
@@ -25,14 +24,14 @@ export default function Home() {
       </div>
 
       <div className="col-start-3">
-        <ScrollableBlock blockName="table reservation"><DeskReservationItems onSelectItems={setSelectedItems}/></ScrollableBlock>
+        <ScrollableBlock blockName="table reservation"><DeskReservationItems onSelectItems={setSelectedTables}/></ScrollableBlock>
       </div>
 
       <div className="col-start-1 row-start-2">
-        <ScrollableBlock blockName="payments"></ScrollableBlock>
+        <ScrollableBlock blockName="payments"><PaymentDetails/></ScrollableBlock>
       </div>
       <div className="col-start-3 row-start-2">
-        <ScrollableBlock blockName="reservation details"><ReservationDetails desk={selectedItems}/></ScrollableBlock>
+        <ScrollableBlock blockName="reservation details"><ReservationDetails desk={selectedTables}/></ScrollableBlock>
       </div>
     </div>
     </main>

@@ -4,13 +4,13 @@ export default function middleware(req){
     let verify = req.cookies.get("loggedIn")
     let url = req.nextUrl
 
-    console.log(url)
+    console.log(!(url.pathname == '/login'))
 
-    if(!verify && !url.pathname == '/login'){
+    if(verify === undefined && !(url.pathname == '/login')){
         return NextResponse.redirect('http://localhost:3000/login')
     }
 
-    if(verify && url.pathname == '/login'){
+    if(verify != undefined && url.pathname == '/login'){
         return NextResponse.redirect('http://localhost:3000/')
     }
     return NextResponse.next()

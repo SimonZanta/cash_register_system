@@ -10,14 +10,39 @@ export default function page(){
 
     async function handleSubmit(e){
         e.preventDefault();
-        setCookie('loggedIn', true)
-        router.push("/")
-    }
+
+        const fname = elementRef.current.querySelector("#fname").value
+        const fpasswd = elementRef.current.querySelector("#fpasswd").value
+        
+        const formData = {
+          username: fname,
+          password: fpasswd,
+        };
+    
+        try {
+          const response = await fetch('http://localhost:8080/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          });
+    
+          if (response.ok) {
+            setCookie('loggedIn', true)
+            router.push("/")
+          } else {
+            
+          }
+        } catch (error) {
+            console.log(error)
+        }
+      }
 
     return(
         <main>
             <div className="mx-auto w-2/3 mt-24">
-            <form className="mx-auto w-80 border-2 border-mainText rounded-xl p-10" onSubmit={handleSubmit}>  
+            <form className="mx-auto w-80 border-2 border-mainText rounded-xl p-10" ref={elementRef} onSubmit={handleSubmit}>  
                 <div className="flex flex-col gap-5">
                 <div className="flex flex-col w-full">
                     <label className="text-base uppercase" htmlFor="fname">name</label>

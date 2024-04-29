@@ -4,11 +4,7 @@ import { getCurrentDateTime } from "../utils";
 export default function ReservationDetails({desk}){
     const elementRef = useRef();
 
-    
-    //implement disabled for fname field
     const isInputCorrect = (elementRef) => {
-      // const fname = elementRef.current.querySelector("#fname").value
-      // console.log(fname)
       if(desk.length > 0 && fname != ""){
         return true
       }
@@ -21,7 +17,6 @@ export default function ReservationDetails({desk}){
       const fname = elementRef.current.querySelector("#fname").value
       const fstartTime = elementRef.current.querySelector("#fstartTime").value
       const fendTime = elementRef.current.querySelector("#fendTime").value
-      // const fdesks = elementRef.current.querySelector("#fdesks")
       
       const formData = {
         name: fname,
