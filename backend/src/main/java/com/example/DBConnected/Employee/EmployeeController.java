@@ -21,7 +21,7 @@ public class EmployeeController {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "nejaka error hlaska");
 
-        }   
+        }
         if(employee.getPassword().equals(employeeDTO.getPassword())){
             return employee;
         }
@@ -29,6 +29,7 @@ public class EmployeeController {
                 HttpStatus.NOT_FOUND, "nejaka error hlaska");
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/register")
     public Employee addOneEmployee(@RequestBody Employee person){
         return this.personRepo.save(person);
